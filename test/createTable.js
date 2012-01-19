@@ -7,8 +7,10 @@ var dynamoDB = require('../lib/dynamoDB'),
 require('fs').readFile('credentials.json', 'utf8', function (err, data) {
     if (err) { throw err; }
     var db = dynamoDB.DynamoDB(JSON.parse(data));
-    console.log(JSON.stringify(db));
-    db.listTables();
-    setTimeout(db.listTables, 2000);
+    db.listTables({}, function(res){
+        console.log(res.statusCode);
+        res.on('data', function (chunk) {console.log(""+chunk)}
+        );
+    });
     
 });

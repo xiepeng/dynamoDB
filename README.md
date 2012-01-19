@@ -1,4 +1,4 @@
-# dynamoDB.js - a node.js module for accessing Amazon DynamoDB
+## dynamoDB.js - a node.js module for accessing Amazon DynamoDB
 ##Under development
 
 ## Implemented features
