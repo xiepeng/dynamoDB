@@ -79,3 +79,15 @@ Usage:
                 console.log(""+chunk);
             });
     });
+
+### UpdateTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateTable.html)
+    dynamoDB.updateTable(
+    {"TableName":"Table1",
+        "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":5}
+    }
+    , function(result) {
+        result.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+    });
+
