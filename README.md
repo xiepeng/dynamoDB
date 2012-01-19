@@ -80,7 +80,7 @@ Usage:
             });
     });
 
-### [BatchGetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItem.html "reference on aws")
+### [BatchGetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItems.html "reference on aws")
 
     dynamoDB.batchGetItem(
         {"RequestItems":
