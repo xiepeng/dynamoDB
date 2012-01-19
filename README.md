@@ -1,5 +1,14 @@
 ## dynamoDB.js - a node.js module for accessing [Amazon DynamoDB](http://aws.amazon.com/dynamodb/ "click to go to Amazon DynamoDB").
 ## *Under development*
+<<<<<<< HEAD
+=======
+Usage:
+
+    // You can read your credentials from a local file.
+    var credentials = {AccessKeyId : "Your_AWS_Access_Key_Id", 
+                       SecretKey   : "Your_Secret_Key"}; 
+    var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
+>>>>>>> 24b9759b42d3d185bcb85361d666ebf2a2316ca7
 
 Usage:
 
@@ -10,6 +19,7 @@ Usage:
 
 DynamoDB uses JSON format for communication. That means both the request body and the response are in JSON format.
 ## Implemented features
+<<<<<<< HEAD
 ### CreateTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html)
 
     dynamoDB.createTable(
@@ -70,4 +80,12 @@ DynamoDB uses JSON format for communication. That means both the request body an
                 console.log(""+chunk);
             });
     });
+=======
+### listTables
+>>>>>>> 24b9759b42d3d185bcb85361d666ebf2a2316ca7
 
+    dynamoDB.listTables({}, function(result) {
+        result.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+    });
