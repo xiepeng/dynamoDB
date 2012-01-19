@@ -1,4 +1,4 @@
-## dynamoDB.js - a node.js module for accessing [Amazon DynamoDB](http://aws.amazon.com/dynamodb/ title="click to go to Amazon DynamoDB").
+## dynamoDB.js - a node.js module for accessing [Amazon DynamoDB](http://aws.amazon.com/dynamodb/ "click to go to Amazon DynamoDB").
 ## *Under development*
 Usage:
 
