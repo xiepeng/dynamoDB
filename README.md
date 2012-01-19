@@ -10,7 +10,7 @@ Usage:
     var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
 ## Implemented features
-### CreateTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html)
+### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
 
     dynamoDB.createTable(
         {"TableName":"Table1",
@@ -24,7 +24,7 @@ Usage:
         });
     });
 
-### ListTables [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_ListTables.html)
+### [ListTables] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_ListTables.html "reference on aws")
 
     dynamoDB.listTables({}, function(result) {
         result.on('data', function(chunk){
@@ -32,7 +32,7 @@ Usage:
         });
     });
 
-### DeleteTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DeleteTable.html)
+### [DeleteTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DeleteTable.html "reference on aws")
 
     dynamoDB.deleteTable({"TableName":"Table1"}, function(result) {
         result.on('data', function(chunk){
@@ -40,7 +40,7 @@ Usage:
         });
     });
 
-### DescribeTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DescribeTable.html)
+### [DescribeTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DescribeTable.html "reference on aws")
 
     dynamoDB.describeTable({"TableName":"Table1"}, function(result) {
         result.on('data', function(chunk){
@@ -49,7 +49,7 @@ Usage:
     });
 
 
-### PutItem [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_PutItem.html)
+### [PutItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_PutItem.html "reference on aws")
 
     dynamoDB.putItem(
         {"TableName":"Table1",
@@ -64,7 +64,7 @@ Usage:
             });
     });
 
-### GetItem [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_GetItem.html)
+### [GetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_GetItem.html "reference on aws")
 
     dynamoDB.getItem(
         {"TableName":"Table1",
@@ -80,7 +80,7 @@ Usage:
             });
     });
 
-### BatchGetItem [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItem.html)
+### [BatchGetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItem.html "reference on aws")
 
     dynamoDB.batchGetItem(
         {"RequestItems":
@@ -98,7 +98,7 @@ Usage:
             });
     });
 
-### UpdateTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateTable.html)
+### [UpdateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateTable.html "reference on aws")
     dynamoDB.updateTable(
     {"TableName":"Table1",
         "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":5}
@@ -109,7 +109,7 @@ Usage:
         });
     });
 
-### UpdateItem [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateItem.html)
+### [UpdateItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateItem.html "reference on aws")
     dynamoDB.updateItem(
         {"TableName":"Table1",
             "Key":
