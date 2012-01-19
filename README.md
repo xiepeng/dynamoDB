@@ -92,10 +92,10 @@ Usage:
                 "AttributesToGet":["Color", "Weight", "Name"]}
             }
         }
-        }, function(result) {
-            result.on('data', function(chunk){
-                console.log(""+chunk);
-            });
+    , function(result) {
+        result.on('data', function(chunk){
+            console.log(""+chunk);
+        });
     });
 
 ### [UpdateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateTable.html "reference on aws")
