@@ -49,6 +49,7 @@ Usage:
         });
     });
 
+
 ### PutItem [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_PutItem.html)
 
     dynamoDB.putItem(
@@ -80,11 +81,44 @@ Usage:
             });
     });
 
+### BatchGetItem [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItem.html)
+
+    dynamoDB.batchGetItem(
+        {"RequestItems":
+            {"Table1": 
+                {"Keys": 
+                    [{"HashKeyElement": {"S":"white"}, "RangeKeyElement":{"N":"2"}},
+                    {"HashKeyElement": {"S":"blue"}, "RangeKeyElement":{"N":"5"}},
+                    {"HashKeyElement": {"S":"red"}, "RangeKeyElement":{"N":"3"}}],
+                "AttributesToGet":["Color", "Weight", "Name"]}
+            }
+        }
+        }, function(result) {
+            result.on('data', function(chunk){
+                console.log(""+chunk);
+            });
+    });
+
 ### UpdateTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateTable.html)
     dynamoDB.updateTable(
     {"TableName":"Table1",
         "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":5}
     }
+    , function(result) {
+        result.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+    });
+
+### UpdateItem [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateItem.html)
+    dynamoDB.updateItem(
+        {"TableName":"Table1",
+            "Key":
+                {"HashKeyElement":{"S":"white"},
+                "RangeKeyElement":{"N":"2"}},
+            "AttributeUpdates":{"Name":{"Value":{"S":"not-so-fancy-anymore vase"},"Action":"PUT"}},
+            "ReturnValues":"ALL_NEW"
+        }
     , function(result) {
         result.on('data', function(chunk){
             console.log(""+chunk);
