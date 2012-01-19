@@ -8,8 +8,7 @@ Usage:
     var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
 ## Implemented features
-* listTables
-
+### listTables
 
     dynamoDB.listTables({}, function(result) {
         result.on('data', function(chunk){
