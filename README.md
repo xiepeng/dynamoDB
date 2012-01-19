@@ -32,6 +32,14 @@ DynamoDB uses JSON format for communication. That means both the request body an
         });
     });
 
+### DeleteTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DeleteTable.html)
+
+    dynamoDB.deleteTable({"TableName":"Table1"}, function(result) {
+        result.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+    });
+
 ### DescribeTable [reference on aws](http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DescribeTable.html)
 
     dynamoDB.describeTable({"TableName":"Table1"}, function(result) {
