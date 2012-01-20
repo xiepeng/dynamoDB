@@ -12,7 +12,7 @@ Usage:
 ## Examples
 Each function has a callback with a http.response object as the argument.
 ### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
-Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set the read capacity units to 5 and write capacity units to 10.
+Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"(Numeric). Set the read capacity units to 5 and write capacity units to 10.
 
     dynamoDB.createTable(
         {"TableName":"Table1",
@@ -53,6 +53,7 @@ Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set th
 
 
 ### [PutItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_PutItem.html "reference on aws")
+Put an item into Table1, with Color="white" and Weight="2". Add an attribute: "Name"="fancy vase".
 
     dynamoDB.putItem(
         {"TableName":"Table1",
@@ -69,6 +70,7 @@ Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set th
     });
 
 ### [GetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_GetItem.html "reference on aws")
+Get an item by its key: Color="white" and Weight="2". Ask for the "Name" attribute also.
 
     dynamoDB.getItem(
         {"TableName":"Table1",
@@ -85,6 +87,10 @@ Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set th
     });
 
 ### [BatchGetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItems.html "reference on aws")
+Get multiple items by their keys. Ask for the "Name" attribute also. 
+*Color="white" and Weight="2"; 
+*Color="blue" and Weight="5"; 
+*Color="red" and Weight="3"; 
 
     dynamoDB.batchGetItem(
         {"RequestItems":
@@ -103,6 +109,8 @@ Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set th
     });
 
 ### [UpdateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateTable.html "reference on aws")
+Update a table and change it write capacity units from 10 (the original setting when the table was created) to 5. The process involves Amazon DynamoDB re-distributing the data. So it will take some time before you can update the same table again.
+
     dynamoDB.updateTable(
         {"TableName":"Table1",
             "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":5}
@@ -114,6 +122,8 @@ Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set th
     });
 
 ### [UpdateItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateItem.html "reference on aws")
+Update an item and change its "Name" attribute from "fancy vase" into "not-so-fancy-anymore vase". The item is located by its hash key and range key.
+
     dynamoDB.updateItem(
         {"TableName":"Table1",
             "Key":
@@ -130,6 +140,8 @@ Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set th
 
 
 ### [Query] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_Query.html "reference on aws")
+Query the table "Table1" and ask for all items with (hash key)Color="white" and (range key)Weight > 1.
+
     dynamoDB.query(
         {"TableName":"Table1",
             "Limit"             : 2,
@@ -145,15 +157,14 @@ Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set th
         });
     });
 
-
-
-
 ### [Scan] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_Scan.html "reference on aws")
+Scan the table "Table1" and find items with Name="sofa". The attribute "Name" does not have to be a key.
+
     dynamoDB.scan(
         {"TableName":"Table1",
             "Limit": 2,
             "ScanFilter":{
-                "Color":{"AttributeValueList":[{"S":"red"}],"ComparisonOperator":"EQ"}
+                "Name":{"AttributeValueList":[{"S":"sofa"}],"ComparisonOperator":"EQ"}
             },
             "AttributesToGet":["Color", "Weight", "Name"]
         }
