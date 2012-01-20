@@ -17,9 +17,9 @@ Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"
     dynamoDB.createTable(
         {"TableName":"Table1",
             "KeySchema":
-                {"HashKeyElement":{"AttributeName":"Color","AttributeType":"S"},
-                "RangeKeyElement":{"AttributeName":"Weight","AttributeType":"N"}},
-            "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":10}
+                {"HashKeyElement"   : {"AttributeName":"Color",  "AttributeType":"S"},
+                "RangeKeyElement"   : {"AttributeName":"Weight", "AttributeType":"N"}},
+            "ProvisionedThroughput" : {"ReadCapacityUnits":5, "WriteCapacityUnits":10}
         }
     , function(result) {
             result.on('data', function(chunk){
@@ -58,9 +58,9 @@ Put an item into Table1, with Color="white" and Weight="2". Add an attribute: "N
     dynamoDB.putItem(
         {"TableName":"Table1",
             "Item":{
-                "Color":{"S":"white"},
-                "Name":{"S":"fancy vase"},
-                "Weight":{"N":"2"}
+                "Color" :{ "S":"white"},
+                "Name"  : {"S":"fancy vase"},
+                "Weight": {"N":"2"}
             }
         }
     , function(result) {
@@ -75,11 +75,11 @@ Get an item by its key: Color="white" and Weight="2". Ask for the "Name" attribu
     dynamoDB.getItem(
         {"TableName":"Table1",
             "Key":
-                {"HashKeyElement": {"S":"white"},
-                "RangeKeyElement": {"N":"2"}
+                {"HashKeyElement"   : {"S":"white"},
+                "RangeKeyElement"   : {"N":"2"}
             },
-            "AttributesToGet":["Color","Weight", "Name"],
-            "ConsistentRead":true
+            "AttributesToGet"   : ["Color","Weight", "Name"],
+            "ConsistentRead"    : true
         }, function(result) {
             result.on('data', function(chunk){
                 console.log(""+chunk);
@@ -99,9 +99,9 @@ Ask for the "Name" attribute also.
         {"RequestItems":
             {"Table1": 
                 {"Keys": 
-                    [{"HashKeyElement": {"S":"white"}, "RangeKeyElement":{"N":"2"}},
-                    {"HashKeyElement": {"S":"blue"}, "RangeKeyElement":{"N":"5"}},
-                    {"HashKeyElement": {"S":"red"}, "RangeKeyElement":{"N":"3"}}],
+                    [{"HashKeyElement"  : {"S":"white"}, "RangeKeyElement":{"N":"2"}},
+                    {"HashKeyElement"   : {"S":"blue"}, "RangeKeyElement":{"N":"5"}},
+                    {"HashKeyElement"   : {"S":"red"}, "RangeKeyElement":{"N":"3"}}],
                 "AttributesToGet":["Color", "Weight", "Name"]}
             }
         }
@@ -130,10 +130,12 @@ Update an item and change its "Name" attribute from "fancy vase" into "not-so-fa
     dynamoDB.updateItem(
         {"TableName":"Table1",
             "Key":
-                {"HashKeyElement":{"S":"white"},
-                "RangeKeyElement":{"N":"2"}},
-            "AttributeUpdates":{"Name":{"Value":{"S":"not-so-fancy-anymore vase"},"Action":"PUT"}},
-            "ReturnValues":"ALL_NEW"
+                {"HashKeyElement"   : {"S":"white"},
+                "RangeKeyElement"   : {"N":"2"}},
+                "AttributeUpdates"  : {  "Name"  : {"Value":{"S":"not-so-fancy-anymore vase"},
+                                         "Action": "PUT"}
+                                      },
+            "ReturnValues"          : "ALL_NEW"
         }
     , function(result) {
         result.on('data', function(chunk){
@@ -152,7 +154,7 @@ Query the table "Table1" and ask for all items with (hash key)Color="white" and 
             "HashKeyValue"      : {"S":"white"},
             "RangeKeyCondition" : {"AttributeValueList":[{"N":"1"}],"ComparisonOperator":"GT"},
             "ScanIndexForward"  : true,
-            "AttributesToGet":["Color", "Weight", "Name"],
+            "AttributesToGet"   : ["Color", "Weight", "Name"]
         }
     , function(result) {
         result.on('data', function(chunk){
@@ -164,10 +166,10 @@ Query the table "Table1" and ask for all items with (hash key)Color="white" and 
 Scan the table "Table1" and find items with Name="sofa". The attribute "Name" does not have to be a key.
 
     dynamoDB.scan(
-        {"TableName":"Table1",
-            "Limit": 2,
+        {"TableName"    :"Table1",
+            "Limit"     : 2,
             "ScanFilter":{
-                "Name":{"AttributeValueList":[{"S":"sofa"}],"ComparisonOperator":"EQ"}
+                "Name"  :{"AttributeValueList":[{"S":"sofa"}],"ComparisonOperator":"EQ"}
             },
             "AttributesToGet":["Color", "Weight", "Name"]
         }
