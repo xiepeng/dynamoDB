@@ -20,9 +20,9 @@ Each function has a callback with a http.response object as the argument.
                 "RangeKeyElement":{"AttributeName":"Weight","AttributeType":"N"}},
             "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":10}
         }, function(result) {
-        result.on('data', function(chunk){
-            console.log(""+chunk);
-        });
+            result.on('data', function(chunk){
+                console.log(""+chunk);
+            });
     });
 
 ### [ListTables] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_ListTables.html "reference on aws")
