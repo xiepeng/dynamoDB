@@ -63,7 +63,7 @@ Put an item into Table1, with Color="white" and Weight="2". Add an attribute: "N
     dynamoDB.putItem(
         {"TableName":"Table1",
             "Item":{
-                "Color" :{ "S":"white"},
+                "Color" : {"S":"white"},
                 "Name"  : {"S":"fancy vase"},
                 "Weight": {"N":"2"}
             }
