@@ -1,6 +1,6 @@
 ## dynamoDB.js - a node.js module for accessing [Amazon DynamoDB](http://aws.amazon.com/dynamodb/ "click to go to Amazon DynamoDB").
 
-DynamoDB uses JSON for communication. That means both the request body and the response are in JSON format. This module wraps up the request and takes care of authentication. The user will be responsible for crafting the request and parsing the result(both in JSON).
+DynamoDB uses JSON for communication. That means both the request body and the response are in JSON format. This module wraps up the request and takes care of authentication. The user will be responsible for crafting the request and parsing the result.
 
 Usage:
 
@@ -36,6 +36,7 @@ Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"
     });
 
 ### [DeleteTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DeleteTable.html "reference on aws")
+Delete Table1.
 
     dynamoDB.deleteTable({"TableName":"Table1"}, function(result) {
         result.on('data', function(chunk){
