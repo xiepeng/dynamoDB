@@ -10,7 +10,7 @@ Usage:
     var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
 ## Examples
-Each function has a callback with a http.response object as the argument.
+Each function has a callback with a [http.ClientResponse](http://nodejs.org/docs/latest/api/http.html#http.ClientResponse) object as the argument.
 ### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
 Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"(Numeric). Set the read capacity units to 5 and write capacity units to 10.
 
