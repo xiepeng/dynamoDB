@@ -125,3 +125,40 @@ Each function has a callback with a http.response object as the argument.
         });
     });
 
+
+### [Query] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_Query.html "reference on aws")
+    dynamoDB.query(
+        {"TableName":"Table1",
+            "Limit"             : 2,
+            "ConsistentRead"    : true,
+            "HashKeyValue"      : {"S":"white"},
+            "RangeKeyCondition" : {"AttributeValueList":[{"N":"1"}],"ComparisonOperator":"GT"},
+            "ScanIndexForward"  : true,
+            "AttributesToGet":["Color", "Weight", "Name"],
+        }
+    , function(result) {
+        result.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+    });
+
+
+
+
+### [Scan] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_Scan.html "reference on aws")
+    dynamoDB.scan(
+        {"TableName":"Table1",
+            "Limit": 2,
+            "ScanFilter":{
+                "Color":{"AttributeValueList":[{"S":"red"}],"ComparisonOperator":"EQ"}
+            },
+            "AttributesToGet":["Color", "Weight", "Name"]
+        }
+    , function(result) {
+        result.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+    });
+
+
+
