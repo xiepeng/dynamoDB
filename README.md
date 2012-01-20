@@ -9,17 +9,18 @@ Usage:
                        SecretKey   : "Your_Secret_Key"}; 
     var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
-## Implemented features
+## Examples
 Each function has a callback with a http.response object as the argument.
 ### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
-
+Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set the read capacity units to 5 and write capacity units to 10.
     dynamoDB.createTable(
         {"TableName":"Table1",
             "KeySchema":
                 {"HashKeyElement":{"AttributeName":"Color","AttributeType":"S"},
                 "RangeKeyElement":{"AttributeName":"Weight","AttributeType":"N"}},
             "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":10}
-        }, function(result) {
+        }
+    , function(result) {
             result.on('data', function(chunk){
                 console.log(""+chunk);
             });
@@ -59,7 +60,8 @@ Each function has a callback with a http.response object as the argument.
                 "Name":{"S":"fancy vase"},
                 "Weight":{"N":"2"}
             }
-        }, function(result) {
+        }
+    , function(result) {
             result.on('data', function(chunk){
                 console.log(""+chunk);
             });
@@ -101,9 +103,9 @@ Each function has a callback with a http.response object as the argument.
 
 ### [UpdateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateTable.html "reference on aws")
     dynamoDB.updateTable(
-    {"TableName":"Table1",
-        "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":5}
-    }
+        {"TableName":"Table1",
+            "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":5}
+        }
     , function(result) {
         result.on('data', function(chunk){
             console.log(""+chunk);
