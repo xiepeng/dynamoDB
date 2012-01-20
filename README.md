@@ -2,6 +2,10 @@
 
 DynamoDB uses JSON for communication. That means both the request body and the response are in JSON format. This module wraps up the request and takes care of authentication. The user will be responsible for crafting the request and parsing the result.
 
+Installation:
+
+    npm install dynamoDB
+
 Usage:
 
     // You can read your credentials from a local file.
