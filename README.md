@@ -87,12 +87,13 @@ Get an item by its key: Color="white" and Weight="2". Ask for the "Name" attribu
     });
 
 ### [BatchGetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItems.html "reference on aws")
-Get multiple items by their keys. Ask for the "Name" attribute also. 
+Get multiple items by their keys: 
 
 *  Color="white" and Weight="2"; 
 *  Color="blue" and Weight="5"; 
-*  Color="red" and Weight="3"; 
+*  Color="red" and Weight="3". 
 
+Ask for the "Name" attribute also. 
 
     dynamoDB.batchGetItem(
         {"RequestItems":
