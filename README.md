@@ -10,6 +10,7 @@ Usage:
     var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
 ## Implemented features
+Each function has a callback with a http.response object as the argument.
 ### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
 
     dynamoDB.createTable(
