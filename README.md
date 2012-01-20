@@ -13,6 +13,7 @@ Usage:
 Each function has a callback with a http.response object as the argument.
 ### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
 Create a table named "Table1" with HashKey "Color" and RangeKey "Weight". Set the read capacity units to 5 and write capacity units to 10.
+
     dynamoDB.createTable(
         {"TableName":"Table1",
             "KeySchema":
