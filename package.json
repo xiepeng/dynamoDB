@@ -1,7 +1,8 @@
 {
   "name": "dynamoDB",
   "description": "A node js module for accessing Amazon DynamoDB",
-  "version": "0.1.1",
+  "keywords": ["DynamoDB", "node", "No-SQL", "AWS", "Amazon"],
+  "version": "0.1.2",
   "author": "peng Xie <xiepeng.peng@gmail.com>",
   "contributors": [ 
     { "name": "Peng Xie", "email": "xiepeng.peng@gmail.com" }
