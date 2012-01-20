@@ -109,7 +109,7 @@ Get multiple items by their keys. Ask for the "Name" attribute also.
     });
 
 ### [UpdateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_UpdateTable.html "reference on aws")
-Update a table and change it write capacity units from 10 (the original setting when the table was created) to 5. The process involves Amazon DynamoDB re-distributing the data. So it will take some time before you can update the same table again.
+Update a table and change its write capacity units from 10 (the original setting when the table was created) to 5. The process involves Amazon DynamoDB re-distributing the data. So it will take some time before you can update the same table again.
 
     dynamoDB.updateTable(
         {"TableName":"Table1",
