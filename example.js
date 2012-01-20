@@ -6,16 +6,16 @@ var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
 /*
 dynamoDB.createTable(
-{"TableName":"Table1",
-    "KeySchema":
-        {"HashKeyElement":{"AttributeName":"Color","AttributeType":"S"},
-        "RangeKeyElement":{"AttributeName":"Weight","AttributeType":"N"}},
-    "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":10}
-}
-, function(result) {
-    result.on('data', function(chunk){
-        console.log(""+chunk);
-    });
+    {"TableName":"Table1",
+        "KeySchema":
+            {"HashKeyElement":{"AttributeName":"Color","AttributeType":"S"},
+            "RangeKeyElement":{"AttributeName":"Weight","AttributeType":"N"}},
+        "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":10}
+    }
+    , function(result) {
+        result.on('data', function(chunk){
+            console.log(""+chunk);
+        });
 });
 */
 
