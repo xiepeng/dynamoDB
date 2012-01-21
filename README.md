@@ -14,7 +14,7 @@ Usage:
     var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
 ## Examples
-Each function has a callback with a [http.ClientResponse](http://nodejs.org/docs/latest/api/http.html#http.ClientResponse) object as the argument.
+Each function has a callback with a [http.ClientResponse](http://nodejs.org/docs/latest/api/http.html#http.ClientResponse) object and a "result" object as the argument. The second object, "result", emitts an event 'ready' when all the response data are reveived, then parse the response into a javascript object. 
 ### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
 Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"(Numeric). Set the read capacity units to 5 and write capacity units to 10.
 
@@ -25,34 +25,56 @@ Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"
                 "RangeKeyElement"   : {"AttributeName":"Weight", "AttributeType":"N"}},
             "ProvisionedThroughput" : {"ReadCapacityUnits":5, "WriteCapacityUnits":10}
         }
-    , function(result) {
-            result.on('data', function(chunk){
-                console.log(""+chunk);
-            });
+    , function(response,result) {
+        // The code below just prints out the response string...
+        respsone.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+        // ... while the following code retrieves the result in JavaScript object called "data".
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
+        });
     });
 
 ### [ListTables] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_ListTables.html "reference on aws")
 
-    dynamoDB.listTables({}, function(result) {
-        result.on('data', function(chunk){
+    dynamoDB.listTables({}, function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
         });
     });
 
 ### [DeleteTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DeleteTable.html "reference on aws")
 Delete Table1.
 
-    dynamoDB.deleteTable({"TableName":"Table1"}, function(result) {
-        result.on('data', function(chunk){
+    dynamoDB.deleteTable({"TableName":"Table1"}, function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
         });
     });
 
 ### [DescribeTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DescribeTable.html "reference on aws")
 
-    dynamoDB.describeTable({"TableName":"Table1"}, function(result) {
-        result.on('data', function(chunk){
+    dynamoDB.describeTable({"TableName":"Table1"}, function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
         });
     });
 
@@ -68,10 +90,15 @@ Put an item into Table1, with Color="white" and Weight="2". Add an attribute: "N
                 "Weight": {"N":"2"}
             }
         }
-    , function(result) {
-            result.on('data', function(chunk){
-                console.log(""+chunk);
-            });
+    , function(response,result) {
+        response.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
+        });
     });
 
 ### [GetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_GetItem.html "reference on aws")
@@ -85,10 +112,16 @@ Get an item by its key: Color="white" and Weight="2". Ask for the "Name" attribu
             },
             "AttributesToGet"   : ["Color","Weight", "Name"],
             "ConsistentRead"    : true
-        }, function(result) {
-            result.on('data', function(chunk){
-                console.log(""+chunk);
-            });
+        }
+    , function(response,result) {
+        response.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
+        });
     });
 
 ### [BatchGetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItems.html "reference on aws")
@@ -110,9 +143,14 @@ Ask for the "Name" attribute also.
                 "AttributesToGet":["Color", "Weight", "Name"]}
             }
         }
-    , function(result) {
-        result.on('data', function(chunk){
+    , function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
         });
     });
 
@@ -123,9 +161,14 @@ Update a table and change its write capacity units from 10 (the original setting
         {"TableName":"Table1",
             "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":5}
         }
-    , function(result) {
-        result.on('data', function(chunk){
+    , function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
         });
     });
 
@@ -142,9 +185,14 @@ Update an item and change its "Name" attribute from "fancy vase" into "not-so-fa
                                       },
             "ReturnValues"          : "ALL_NEW"
         }
-    , function(result) {
-        result.on('data', function(chunk){
+    , function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
         });
     });
 
@@ -161,9 +209,14 @@ Query the table "Table1" and ask for all items with (hash key)Color="white" and 
             "ScanIndexForward"  : true,
             "AttributesToGet"   : ["Color", "Weight", "Name"]
         }
-    , function(result) {
-        result.on('data', function(chunk){
+    , function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
         });
     });
 
@@ -178,9 +231,14 @@ Scan the table "Table1" and find items with Name="sofa". The attribute "Name" do
             },
             "AttributesToGet":["Color", "Weight", "Name"]
         }
-    , function(result) {
-        result.on('data', function(chunk){
+    , function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log("Error:" + data.error);
+            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            // ...
         });
     });
 
