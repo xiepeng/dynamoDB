@@ -12,9 +12,12 @@ dynamoDB.createTable(
             "RangeKeyElement":{"AttributeName":"Weight","AttributeType":"N"}},
         "ProvisionedThroughput":{"ReadCapacityUnits":5,"WriteCapacityUnits":10}
     }
-    , function(result) {
-        result.on('data', function(chunk){
+    , function(response,result) {
+        response.on('data', function(chunk){
             console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log('Creation of table was successful:' + !data.error);
         });
 });
 */

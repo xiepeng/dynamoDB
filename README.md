@@ -1,6 +1,6 @@
 ## dynamoDB.js - a node.js module for accessing [Amazon DynamoDB](http://aws.amazon.com/dynamodb/ "click to go to Amazon DynamoDB").
 
-DynamoDB uses JSON for communication. That means both the request body and the response are in JSON format. This module wraps up the request and takes care of authentication. The user will be responsible for crafting the request and parsing the result.
+DynamoDB uses JSON for communication. That means both the request body and the response are in JSON format. This module wraps up the request and takes care of authentication. The user will be responsible for crafting the request and consuming the result.
 
 Installation:
 
@@ -14,7 +14,7 @@ Usage:
     var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
 ## Examples
-Each function has a callback with a [http.ClientResponse](http://nodejs.org/docs/latest/api/http.html#http.ClientResponse) object and a "result" object as the argument. The second object, "result", emitts an event 'ready' when all the response data are reveived, then parse the response into a javascript object. 
+Each function has a callback with a [http.ClientResponse](http://nodejs.org/docs/latest/api/http.html#http.ClientResponse) together with a "result" object as the arguments. The second argument, "result", emitts an event 'ready' when all the response data are reveived, and parses the response into a javascript object. 
 ### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
 Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"(Numeric). Set the read capacity units to 5 and write capacity units to 10.
 
