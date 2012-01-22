@@ -14,7 +14,7 @@ Usage:
     var dynamoDB = require('./lib/dynamoDB').DynamoDB(credentials);
 
 ## Examples
-Each function has a callback with a [http.ClientResponse](http://nodejs.org/docs/latest/api/http.html#http.ClientResponse) together with a "result" object as the arguments. The second argument, "result", emitts an event 'ready' when all the response data are reveived, and parses the response into a javascript object. 
+Each function has a callback with a [http.ClientResponse](http://nodejs.org/docs/latest/api/http.html#http.ClientResponse) together with a "result" object as the arguments. The second argument, "result", emitts an event 'ready' when all the response data are received, and parses the response into a JavaScript object. 
 ### [CreateTable] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_CreateTable.html "reference on aws")
 Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"(Numeric). Set the read capacity units to 5 and write capacity units to 10.
 
