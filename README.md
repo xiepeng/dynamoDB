@@ -124,6 +124,24 @@ Get an item by its key: Color="white" and Weight="2". Ask for the "Name" attribu
         });
     });
 
+### [DeleteItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_DeleteItem.html "reference on aws")
+Delete an item by its key: Color="white" and Weight="2".
+
+    dynamoDB.deleteItem(
+        { "TableName":"Table1",
+            "Key":
+                {"HashKeyElement":{"S":"white"}, "RangeKeyElement":{"N":"2"},
+            "ReturnValues":"ALL_OLD"}
+        }
+    , function(response, result) {
+        response.on('data', function(chunk){
+            console.log(""+chunk);
+        });
+        result.on('ready', function(data){
+            console.log(data.ConsumedCapacityUnits);
+        });
+    });
+
 ### [BatchGetItem] (http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_BatchGetItems.html "reference on aws")
 Get multiple items by their keys: 
 
