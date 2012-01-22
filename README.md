@@ -168,6 +168,7 @@ Ask for the "Name" attribute also.
         result.on('ready', function(data){
             console.log("Error:" + data.error);
             console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("Items:\n" + data.Items);
             // ...
         });
     });
@@ -234,6 +235,7 @@ Query the table "Table1" and ask for all items with (hash key)Color="white" and 
         result.on('ready', function(data){
             console.log("Error:" + data.error);
             console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("Items:\n" + data.Items);
             // ...
         });
     });
@@ -256,6 +258,7 @@ Scan the table "Table1" and find items with Name="sofa". The attribute "Name" do
         result.on('ready', function(data){
             console.log("Error:" + data.error);
             console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("Items:\n" + data.Items);
             // ...
         });
     });
