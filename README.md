@@ -27,7 +27,7 @@ Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"
         }
     , function(response,result) {
         // The code below just prints out the response string...
-        respsone.on('data', function(chunk){
+        response.on('data', function(chunk){
             console.log(""+chunk);
         });
         // ... while the following code retrieves the result in JavaScript object called "data".
