@@ -33,7 +33,7 @@ Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"
         // ... while the following code retrieves the result in JavaScript object called "data".
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             // ...
         });
     });
@@ -46,7 +46,7 @@ Create a table named "Table1" with HashKey "Color"(String) and RangeKey "Weight"
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             // ...
         });
     });
@@ -60,7 +60,7 @@ Delete Table1.
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             // ...
         });
     });
@@ -73,7 +73,7 @@ Delete Table1.
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             // ...
         });
     });
@@ -96,7 +96,7 @@ Put an item into Table1, with Color="white" and Weight="2". Add an attribute: "N
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             // ...
         });
     });
@@ -119,7 +119,7 @@ Get an item by its key: Color="white" and Weight="2". Ask for the "Name" attribu
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             // ...
         });
     });
@@ -167,7 +167,7 @@ Ask for the "Name" attribute also.
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             console.log("Items:\n" + data.Items);
             // ...
         });
@@ -186,7 +186,7 @@ Update a table and change its write capacity units from 10 (the original setting
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             // ...
         });
     });
@@ -210,7 +210,7 @@ Update an item and change its "Name" attribute from "fancy vase" into "not-so-fa
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             // ...
         });
     });
@@ -234,7 +234,7 @@ Query the table "Table1" and ask for all items with (hash key)Color="white" and 
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             console.log("Items:\n" + data.Items);
             // ...
         });
@@ -257,7 +257,7 @@ Scan the table "Table1" and find items with Name="sofa". The attribute "Name" do
         });
         result.on('ready', function(data){
             console.log("Error:" + data.error);
-            console.log("ComsumedCapacityUnits:" + data.ConsumedCapacityUnits);
+            console.log("ConsumedCapacityUnits:" + data.ConsumedCapacityUnits);
             console.log("Items:\n" + data.Items);
             // ...
         });
