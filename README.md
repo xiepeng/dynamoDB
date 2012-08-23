@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/xiepeng/dynamoDB.png)](http://travis-ci.org/xiepeng/dynamoDB)
 ## dynamoDB.js - a node.js module for accessing [Amazon DynamoDB](http://aws.amazon.com/dynamodb/ "click to go to Amazon DynamoDB").
 
 DynamoDB uses JSON for communication. That means both the request body and the response are in JSON format. This module wraps up the request and takes care of authentication. The user will be responsible for crafting the request and consuming the result.
